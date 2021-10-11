@@ -41,6 +41,8 @@ async function getData(query) {
 
      for (let index = 1; index < data.photos.pages.length; index++){
 
+
+      
         const page = document.createElement('h2');
         form.appendChild(page);
 
@@ -52,13 +54,21 @@ async function getData(query) {
 
     for (let index = 0; index < data.photos.photo.length; index++) {
 
+        
+        let SingePhotoObjectAdress = data.photos.photo[index]
+        
+        // let SinglePhotoUrl ="https://farm" + SingePhotoObjectAdress.farm-id + ".staticflickr.com/" + SingePhotoObjectAdress.server+"/" + SingePhotoObjectAdress.id + "_"+SingePhotoObjectAdress.secret + ".jpg";
+        
+        
+        // "https://api.flickr.com/services/rest/?method=flickr.photos.getSizes&api_key=ca370d51a054836007519a00ff4ce59e&photo_id="+data.photos.photo[index].id+"&format=json&nojsoncallback=1";
+
 
         const item = document.createElement('li');
 
         lista.appendChild(item);
         item.innerHTML = `
         <h2> Image Title:"${data.photos.photo[index].title}"</h2>
-        <img src="${data.photos.photo[index]}" alt="${data.photos.photo[index].title}"> `;
+        <img src="" alt="${data.photos.photo[index].title}"/> `;
 
 
         // const element = array[index];
