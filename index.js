@@ -2,15 +2,17 @@ const lista = document.querySelector('#lista');
 const form = document.querySelector('form');
 const searchTerm = document.querySelector('#search');//
 
-form.addEventListener('submit', e => {
+// form.addEventListener('submit', e => {
 
-    e.preventDefault();
+//     e.preventDefault();
 
-    lista.innerHTML = '';
-    getData(searchTerm.value);
+//     lista.innerHTML = '';
+//     getData(searchTerm.value);
 
 
-});
+// });
+
+
 
 
 async function getData(query) {
@@ -37,12 +39,14 @@ async function getData(query) {
 
 
 
-    //  for (let index = 0; index < data.photos.page.length; index++){
+     for (let index = 1; index < data.photos.pages.length; index++){
 
-        
-    //     data.photos.page[index]
+        const page = document.createElement('h2');
+        form.appendChild(page);
 
-    //  }; 
+        page.innerHTML = data.photos.page[index];
+
+     }; 
 
 
 
@@ -51,9 +55,10 @@ async function getData(query) {
 
         const item = document.createElement('li');
 
-        data.photos.photo[0].title
         lista.appendChild(item);
-        item.innerHTML = `<p></p><img src="${data.photos.photo[index].id}" alt="${data.photos.photo[index].title}"> <p> Image Title:"${data.photos.photo[index].title}"</p>`;
+        item.innerHTML = `
+        <h2> Image Title:"${data.photos.photo[index].title}"</h2>
+        <img src="${data.photos.photo[index]}" alt="${data.photos.photo[index].title}"> `;
 
 
         // const element = array[index];
@@ -63,6 +68,8 @@ async function getData(query) {
 
 };
 
+
+getData();
 
 // const showPhotos = array => {
 
