@@ -1,0 +1,8 @@
+
+flickr-api-metoden .getRecent kan användas för att se info om nyligen uppladdade bilder.
+
+ 
+testa flickr-api search-metod för att se om bild-data kan fås och visas genom denna
+lista dessa separat från .getRecent foton
+
+använd en query med Fetch för att koppla mot flickr-API, samt för att välja anrops-metod.
