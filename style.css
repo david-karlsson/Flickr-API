@@ -10,9 +10,10 @@ font-family: 'Raleway', sans-serif;
 }
 
 main form button{
-
+    margin: 0.5rem;
     padding: 1rem;
     background-color: cornsilk;
+    border-radius: 5px;
 }
 
 
@@ -38,6 +39,8 @@ main  ul li{
     margin: 1rem;
     box-shadow: 1px 1px 2px;
     font-family: 'Raleway', sans-serif;
+    overflow: hidden;
+    overflow-wrap: anywhere;
 }
 
 
@@ -66,5 +69,10 @@ main{ grid-template-columns: repeat(1,1fr);}
 
            max-width: 80vw;
        }
+
+
+       * img {
+        max-width: 70vw;
+    }
     
     }

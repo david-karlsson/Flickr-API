@@ -3,7 +3,7 @@ const form = document.querySelector('form');
 const searchTerm = document.querySelector('#search');
 const searchList = document.querySelector("#search-list");
 const Recent = document.querySelector('.Recent');
-
+const PageData = document.querySelector('.page-data');
 
 form.addEventListener('submit', e => {
 
@@ -53,12 +53,12 @@ async function getData() {
 
         const tagsResponse = await fetch(`https://api.flickr.com/services/rest/?method=flickr.tags.getListPhoto&api_key=8e13b136facec361d2037e0504bce3a1&per_page=5&format=json&nojsoncallback=1`,
         {
-                 'photo_id':data.photos.photo[0].id
+                 'photo_id':'data.photos.photo[0].id'
            
         });
 
 
-
+tagsResponse.photo_id = data.photos.photo[0].id;
 
 
        
@@ -71,13 +71,6 @@ async function getData() {
 
 
  
-    const page = document.createElement('p');
-    form.appendChild(page);
-    
-    page.innerHTML = "Page: " + data.photos.page + "/" + data.photos.pages
-    +"<p>Photos per page: " + data.photos.perpage +"</p>";
-        
-
 
     //  for (let index = 1; index < data.photos.pages.length; index++){
 
@@ -90,7 +83,33 @@ async function getData() {
 
     //  }; 
 
+    Paging(data);
+    showPhotos(data);
+    
+    console.log(data);
+    console.log(tagStats);
+    // return(data,tagStats);
 
+};
+
+
+
+
+
+function Paging(data){
+
+    // const page = document.createElement('p');
+    // form.appendChild(page);
+    
+    PageData.innerHTML = "Page: " + data.photos.page + "/" + data.photos.pages
+    +"<p>Photos per page: " + data.photos.perpage +"</p>";
+        
+
+
+}
+
+
+const showPhotos = data => {
 
     for (let index = 0; index < data.photos.photo.length; index++) {
 
@@ -115,28 +134,25 @@ async function getData() {
         // const element = array[index];
 
     };
-    console.log(data);
-    console.log(tagStats);
-    // return(data,tagStats);
-
-};
+}
 
 
 
 
-async function getSearchData(query) {
 
-    const response = await fetch(`https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=8e13b136facec361d2037e0504bce3a1&per_page=10&format=json&nojsoncallback=1`,
-        {
+// async function getSearchData(query) {
+
+//     const response = await fetch(`https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=8e13b136facec361d2037e0504bce3a1&per_page=10&format=json&nojsoncallback=1`,
+//         {
 
           
 
             
 
-        });
+//         });
 
-        const data = await response.json();
-        showPhotos(data);
+//         const data = await response.json();
+//         showPhotos(data);
 
         // for (let index = 0; index < data.photos.photo.length; index++) {
 
@@ -164,41 +180,41 @@ async function getSearchData(query) {
 
 
 
-    };
+    // };
 
 
 
 
 
 
-const showPhotos = data => {
+// const showSearchPhotos = data => {
 
-    console.log(data);
-    console.log(tagStats);
-data.photos.photo.forEach(data => {
+//     console.log(data);
+//     console.log(tagStats);
+// data.photos.photo.forEach(data => {
 
 
-    let SingePhotoObjectAdress = data.photos.photo[index]
+//     let SingePhotoObjectAdress = data.photos.photo[index]
             
-    let SinglePhotoUrl = "https://live.staticflickr.com/" + SingePhotoObjectAdress.server + "/" + SingePhotoObjectAdress.id +"_" +SingePhotoObjectAdress.secret+".jpg";
+//     let SinglePhotoUrl = "https://live.staticflickr.com/" + SingePhotoObjectAdress.server + "/" + SingePhotoObjectAdress.id +"_" +SingePhotoObjectAdress.secret+".jpg";
 
     
 
 
-    const item = document.createElement('li');
+//     const item = document.createElement('li');
 
-    lista.appendChild(item);
-    item.innerHTML = `
-    <h2> Image Title:"${data.photos.photo[index].title}"</h2>
-    <img src= ${SinglePhotoUrl} alt="${data.photos.photo[index].title}"/> `;
+//     lista.appendChild(item);
+//     item.innerHTML = `
+//     <h2> Image Title:"${data.photos.photo[index].title}"</h2>
+//     <img src= ${SinglePhotoUrl} alt="${data.photos.photo[index].title}"/> `;
 
 
 
 
   
-});
+// });
 
-};
+// };
 
 
 
